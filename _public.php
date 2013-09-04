@@ -16,6 +16,7 @@ class lightBoxPublic
 {
 	public static function publicHeadContent($core)
 	{
+		$core->blog->settings->addNameSpace('lightbox');
 		if (!$core->blog->settings->lightbox->lightbox_enabled) {
 			return;
 		}

@@ -17,6 +17,7 @@ class lightBoxBehaviors
 {
 	public static function adminBlogPreferencesForm($core,$settings)
 	{
+		$settings->addNameSpace('lightbox');
 		echo
 		'<fieldset><legend>lightBox</legend>'.
 		'<p><label class="classic">'.
