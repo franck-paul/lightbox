@@ -25,7 +25,7 @@ class lightBoxBehaviors
 		__('Enable lightBox').'</label></p>'.
 		'</div>';
 	}
-	
+
 	public static function adminBeforeBlogSettingsUpdate($settings)
 	{
 		$settings->addNameSpace('lightbox');
