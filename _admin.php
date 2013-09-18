@@ -19,11 +19,11 @@ class lightBoxBehaviors
 	{
 		$settings->addNameSpace('lightbox');
 		echo
-		'<fieldset><legend>lightBox</legend>'.
+		'<div class="fieldset"><h4>lightBox</h4>'.
 		'<p><label class="classic">'.
 		form::checkbox('lightbox_enabled','1',$settings->lightbox->lightbox_enabled).
 		__('Enable lightBox').'</label></p>'.
-		'</fieldset>';
+		'</div>';
 	}
 	
 	public static function adminBeforeBlogSettingsUpdate($settings)
