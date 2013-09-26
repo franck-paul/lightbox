@@ -48,4 +48,3 @@ class lightBoxPublic
 		"</script>\n";
 	}
 }
-?>

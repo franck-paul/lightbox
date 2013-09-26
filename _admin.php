@@ -36,4 +36,3 @@ class lightBoxBehaviors
 		$settings->lightbox->put('lightbox_enabled',!empty($_POST['lightbox_enabled']),'boolean');
 	}
 }
-?>

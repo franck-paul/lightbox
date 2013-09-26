@@ -18,4 +18,3 @@ $this->registerModule(
 	/* Version */			'1.3',
 	/* Permissions */		'admin'
 );
-?>
