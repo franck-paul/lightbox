@@ -21,7 +21,7 @@ class lightBoxPublic
 		if (!$core->blog->settings->lightbox->lightbox_enabled) {
 			return;
 		}
-		
+
 		$url = $core->blog->getQmarkURL().'pf='.basename(dirname(__FILE__));
 		echo
 		'<style type="text/css">'."\n".
@@ -39,8 +39,8 @@ class lightBoxPublic
 				"blank_img  : '".html::escapeJS($url)."/img/blank.gif'\n".
 			"};".
 			'$("div.post").each(function() {'."\n".
-					'$(this).find("a[href$=.jpg],a[href$=.jpeg],a[href$=.png],a[href$=.gif],'.
-					'a[href$=.JPG],a[href$=.JPEG],a[href$=.PNG],a[href$=.GIF]").modalImages(lb_settings);'."\n".
+					'$(this).find(\'a[href$=".jpg"],a[href$=".jpeg"],a[href$=".png"],a[href$=".gif"],'.
+					'a[href$=".JPG"],a[href$=".JPEG"],a[href$=".PNG"],a[href$=".GIF"]\').modalImages(lb_settings);'."\n".
 
 			"})\n".
 		"});\n".
