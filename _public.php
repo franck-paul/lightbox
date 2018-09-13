@@ -13,7 +13,7 @@
 
 if (!defined('DC_RC_PATH')) {return;}
 
-$core->addBehavior('publicHeadContent', array('lightBoxPublic', 'publicHeadContent'));
+$core->addBehavior('publicHeadContent', ['lightBoxPublic', 'publicHeadContent']);
 
 class lightBoxPublic
 {

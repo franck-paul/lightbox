@@ -16,8 +16,8 @@ if (!defined('DC_CONTEXT_ADMIN')) {return;}
 // dead but useful code, in order to have translations
 __('lightBox') . __('lightBox like effect on images using jquery modal');
 
-$core->addBehavior('adminBlogPreferencesForm', array('lightBoxBehaviors', 'adminBlogPreferencesForm'));
-$core->addBehavior('adminBeforeBlogSettingsUpdate', array('lightBoxBehaviors', 'adminBeforeBlogSettingsUpdate'));
+$core->addBehavior('adminBlogPreferencesForm', ['lightBoxBehaviors', 'adminBlogPreferencesForm']);
+$core->addBehavior('adminBeforeBlogSettingsUpdate', ['lightBoxBehaviors', 'adminBeforeBlogSettingsUpdate']);
 
 class lightBoxBehaviors
 {
