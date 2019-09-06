@@ -32,7 +32,7 @@
     },
 
     build: function(data) {
-      this.ctrl.loader = $('<div class="jq-modal-load"><img src="' + this.params.loader_img + '" alt="' + this.params.loader_txt + '" /></div>');
+      this.ctrl.loader = $(`<div class="jq-modal-load"><img src="${this.params.loader_img}" alt="${this.params.loader_txt}" /></div>`);
       this.addOverlay();
       var size = this.getBoxSize(this.ctrl.loading);
 
@@ -118,12 +118,12 @@
       }
 
       $('div.jq-modal-container', this.ctrl.box).append(
-        '<div class="jq-modal-closer"><a href="#">' + this.params.close_txt + '</a></div>'
+        `<div class="jq-modal-closer"><a href="#">${this.params.close_txt}</a></div>`
       );
       var This = this;
       var close = $('div.jq-modal-closer a', this.ctrl.box);
       close.css({
-          background: 'transparent url(' + this.params.close_img + ') no-repeat'
+          background: `transparent url(${this.params.close_img}) no-repeat`
         })
         .click(function() {
           This.removeOverlay();
@@ -131,7 +131,7 @@
         });
 
       if (document.all) {
-        close[0].runtimeStyle.filter = 'progid:DXImageTransform.Microsoft.AlphaImageLoader(src="' + this.params.close_img + '", sizingMethod="crop")';
+        close[0].runtimeStyle.filter = `progid:DXImageTransform.Microsoft.AlphaImageLoader(src="${this.params.close_img}", sizingMethod="crop")`;
         close[0].runtimeStyle.backgroundImage = 'none';
       }
     },
@@ -241,13 +241,13 @@
       var modal = this.modal;
 
       var res = $('<div></div>');
-      res.append('<img src="' + link.attr('href') + '" alt="" />');
+      res.append(`<img src="${link.attr('href')}" alt="" />`);
 
       var thumb = $('img:first', link);
       if (thumb.length > 0 && thumb.attr('title')) {
-        res.append('<span class="jq-modal-legend">' + thumb.attr('title') + '</span>');
+        res.append(`<span class="jq-modal-legend">${thumb.attr('title')}</span>`);
       } else if (link.attr('title')) {
-        res.append('<span class="jq-modal-legend">' + link.attr('title') + '</span>');
+        res.append(`<span class="jq-modal-legend">${link.attr('title')}</span>`);
       }
 
       // Add prev/next buttons
@@ -297,13 +297,13 @@
       };
     },
     navBtnStyle: function(btn, next) {
-      var default_bg = 'transparent url(' + this.modal.params.blank_img + ') repeat';
+      var default_bg = `transparent url(${this.modal.params.blank_img}) repeat`;
       var over_bg_i = next ? this.modal.params.next_img : this.modal.params.prev_img;
       var over_bg_p = next ? 'right' : 'left';
 
       btn.css('background', default_bg)
         .bind('mouseenter', function() {
-          $(this).css('background', 'transparent url(' + over_bg_i + ') no-repeat center ' + over_bg_p).css('z-index', 110);
+          $(this).css('background', `transparent url(${over_bg_i}) no-repeat center ${over_bg_p}`).css('z-index', 110);
         })
         .bind('mouseleave', function() {
           $(this).css('background', default_bg);
@@ -316,7 +316,7 @@
 
 (function($) {
   $.modalWeb = function(url, w, h) {
-    var iframe = $('<iframe src="' + url + '" frameborder="0">').css({
+    var iframe = $(`<iframe src="${url}" frameborder="0">`).css({
       border: 'none',
       width: w,
       height: h
