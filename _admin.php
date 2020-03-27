@@ -25,7 +25,7 @@ class lightBoxBehaviors
     {
         $settings->addNameSpace('lightbox');
         echo
-        '<div class="fieldset"><h4>lightBox</h4>' .
+        '<div class="fieldset"><h4 id="lightbox">lightBox</h4>' .
         '<p><label class="classic">' .
         form::checkbox('lightbox_enabled', '1', $settings->lightbox->lightbox_enabled) .
         __('Enable lightBox') . '</label></p>' .
