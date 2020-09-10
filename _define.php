@@ -17,9 +17,9 @@ $this->registerModule(
     "lightBox",                                          // Name
     "lightBox like effect on images using jquery modal", // Description
     "Olivier Meunier and contributors",                  // Author
-    '1.4',                                               // Version
+    '1.5',                                               // Version
     [
-        'requires'    => [['core', '2.16']],                        // Dependencies
+        'requires'    => [['core', '2.17']],                        // Dependencies
         'permissions' => 'admin',                                   // Permissions
         'type'        => 'plugin',                                  // Type
         'support'     => 'https://github.com/franck-paul/lightbox', // Support URL
