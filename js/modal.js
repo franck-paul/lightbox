@@ -51,7 +51,7 @@
     updateBox: function(data, fn) {
       var This = this;
       this.hideCloser();
-      fn = $.isFunction(fn) ? fn : function() {};
+      fn = typeof fn === 'function' ? fn : function() {};
       var content = $('div.jq-modal-content', this.ctrl.box);
       content.empty().append(this.ctrl.loader);
       var size = this.getBoxSize(data, this.params.width, this.params.height);
@@ -162,8 +162,8 @@
         data: this.ctrl
       });
 
-      $(window).bind('resize.modal', this.ctrl, this.resizeOverlay);
-      $(document).bind('keypress.modal', this, this.keyRemove);
+      $(window).on('resize.modal', this.ctrl, this.resizeOverlay);
+      $(document).on('keypress.modal', this, this.keyRemove);
     },
     resizeOverlay: function(e) {
       e.data.overlay.css({
@@ -186,8 +186,8 @@
       return true;
     },
     removeOverlay: function() {
-      $(window).unbind('resize.modal');
-      $(document).unbind('keypress');
+      $(window).off('resize.modal');
+      $(document).off('keypress');
       this.params.on_close.apply(this);
       this.ctrl.overlay.remove();
       this.ctrl.hidden.css('visibility', 'visible');
@@ -233,7 +233,7 @@
     },
     showImage: function(index) {
       var This = this;
-      $(document).unbind('keypress.modalImage');
+      $(document).off('keypress.modalImage');
       if (this.links[index] == undefined) {
         this.modal.removeOverlay();
       }
@@ -271,12 +271,12 @@
       img.onload = function() {
         modal.updateBox(res, function() {
           var Img = $('div.jq-modal-content img', this.ctrl.box);
-          This.navBtnStyle($('a.jq-modal-next', this.ctrl.box), true).css('height', Img.height()).bind('click', index + 1, navClick);
-          This.navBtnStyle($('a.jq-modal-prev', this.ctrl.box), false).css('height', Img.height()).bind('click', index - 1, navClick);
+          This.navBtnStyle($('a.jq-modal-next', this.ctrl.box), true).css('height', Img.height()).on('click', index + 1, navClick);
+          This.navBtnStyle($('a.jq-modal-prev', this.ctrl.box), false).css('height', Img.height()).on('click', index - 1, navClick);
           Img.click(function() {
             This.modal.removeOverlay();
           });
-          $(document).bind('keypress.modalImage', navKey);
+          $(document).on('keypress.modalImage', navKey);
         });
         this.onload = function() {};
       };
@@ -302,10 +302,10 @@
       var over_bg_p = next ? 'right' : 'left';
 
       btn.css('background', default_bg)
-        .bind('mouseenter', function() {
+        .on('mouseenter', function() {
           $(this).css('background', `transparent url(${over_bg_i}) no-repeat center ${over_bg_p}`).css('z-index', 110);
         })
-        .bind('mouseleave', function() {
+        .on('mouseleave', function() {
           $(this).css('background', default_bg);
         });
 

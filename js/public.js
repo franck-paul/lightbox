@@ -1,8 +1,8 @@
-/*global $, getData */
+/*global $, dotclear */
 'use strict';
 
 $(function() {
-  const lb = getData('lightbox');
+  const lb = dotclear.getData('lightbox');
   const lb_settings = {
     'loader_img' : lb.url + '/img/loader.gif',
     'prev_img'   : lb.url + '/img/prev.png',
