@@ -10,18 +10,19 @@
  * @copyright Olivier Meunier
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
-
-if (!defined('DC_CONTEXT_ADMIN')) {return;}
+if (!defined('DC_CONTEXT_ADMIN')) {
+    return;
+}
 
 // dead but useful code, in order to have translations
 __('lightBox') . __('lightBox like effect on images using jquery modal');
 
-$core->addBehavior('adminBlogPreferencesForm', ['lightBoxBehaviors', 'adminBlogPreferencesForm']);
-$core->addBehavior('adminBeforeBlogSettingsUpdate', ['lightBoxBehaviors', 'adminBeforeBlogSettingsUpdate']);
+dcCore::app()->addBehavior('adminBlogPreferencesForm', ['lightBoxBehaviors', 'adminBlogPreferencesForm']);
+dcCore::app()->addBehavior('adminBeforeBlogSettingsUpdate', ['lightBoxBehaviors', 'adminBeforeBlogSettingsUpdate']);
 
 class lightBoxBehaviors
 {
-    public static function adminBlogPreferencesForm($core, $settings)
+    public static function adminBlogPreferencesForm($core = null, $settings)
     {
         $settings->addNameSpace('lightbox');
         echo

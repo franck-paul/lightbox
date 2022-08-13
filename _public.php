@@ -10,27 +10,28 @@
  * @copyright Olivier Meunier
  * @copyright GPL-2.0 https://www.gnu.org/licenses/gpl-2.0.html
  */
+if (!defined('DC_RC_PATH')) {
+    return;
+}
 
-if (!defined('DC_RC_PATH')) {return;}
-
-$core->addBehavior('publicHeadContent', ['lightBoxPublic', 'publicHeadContent']);
+dcCore::app()->addBehavior('publicHeadContent', ['lightBoxPublic', 'publicHeadContent']);
 
 class lightBoxPublic
 {
-    public static function publicHeadContent($core)
+    public static function publicHeadContent($core = null)
     {
-        $core->blog->settings->addNameSpace('lightbox');
-        if (!$core->blog->settings->lightbox->lightbox_enabled) {
+        dcCore::app()->blog->settings->addNameSpace('lightbox');
+        if (!dcCore::app()->blog->settings->lightbox->lightbox_enabled) {
             return;
         }
 
         echo
-        dcUtils::cssLoad($core->blog->getPF('lightbox/css/modal.css')) .
-        dcUtils::jsLoad($core->blog->getPF('lightbox/js/modal.js')) .
+        dcUtils::cssModuleLoad('lightbox/css/modal.css') .
+        dcUtils::jsModuleLoad('lightbox/js/modal.js') .
         dcUtils::jsJson('lightbox', [
-            'url'        => $core->blog->getQmarkURL() . 'pf=' . basename(dirname(__FILE__)),
-            'extensions' => ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp']
+            'url'        => dcCore::app()->blog->getQmarkURL() . 'pf=' . basename(__DIR__),
+            'extensions' => ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'],
         ]) .
-        dcUtils::jsLoad($core->blog->getPF('lightbox/js/public.js'));
+        dcUtils::jsModuleLoad('lightbox/js/public.js');
     }
 }

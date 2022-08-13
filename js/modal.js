@@ -1,9 +1,10 @@
 /*global jQuery */
 'use strict';
 
-(function($) {
+(() => {
+  const $ = jQuery;
   if (/^1\.(0|1)\./.test($.fn.jquery) || /^1\.2\.(0|1|2|3|4|5)/.test($.fn.jquery)) {
-    throw ('Modal requieres jQuery v1.2.6 or later. You are using v' + $.fn.jquery);
+    throw (`Modal requieres jQuery v1.2.6 or later. You are using v${$.fn.jquery}`);
   }
 
   $.modal = function(data, params) {
@@ -22,7 +23,7 @@
       loader_txt: 'loading...',
       close_img: 'close.png',
       close_txt: 'close',
-      on_close: function() {}
+      on_close() {}
     },
     ctrl: {
       box: $(),
@@ -31,10 +32,10 @@
       hidden: $()
     },
 
-    build: function(data) {
+    build(data) {
       this.ctrl.loader = $(`<div class="jq-modal-load"><img src="${this.params.loader_img}" alt="${this.params.loader_txt}" /></div>`);
       this.addOverlay();
-      var size = this.getBoxSize(this.ctrl.loading);
+      const size = this.getBoxSize(this.ctrl.loading);
 
       this.ctrl.box = this.getBox(this.ctrl.loading, {
         top: Math.round($(window).height() / 2 + $(window).scrollTop() - size.h / 2),
@@ -48,33 +49,32 @@
       }
       return this;
     },
-    updateBox: function(data, fn) {
-      var This = this;
+    updateBox(data, fn) {
       this.hideCloser();
-      fn = typeof fn === 'function' ? fn : function() {};
-      var content = $('div.jq-modal-content', this.ctrl.box);
+      fn = typeof fn === 'function' ? fn : () => {};
+      const content = $('div.jq-modal-content', this.ctrl.box);
       content.empty().append(this.ctrl.loader);
-      var size = this.getBoxSize(data, this.params.width, this.params.height);
+      const size = this.getBoxSize(data, this.params.width, this.params.height);
 
-      var top = Math.round($(window).height() / 2 + $(window).scrollTop() - size.h / 2);
-      var left = Math.round($(window).width() / 2 + $(window).scrollLeft() - size.w / 2);
+      const top = Math.round($(window).height() / 2 + $(window).scrollTop() - size.h / 2);
+      const left = Math.round($(window).width() / 2 + $(window).scrollLeft() - size.w / 2);
 
       this.ctrl.box.css('visibility', 'visible').animate({
         top: top < 0 ? 0 : top,
         left: left < 0 ? 0 : left,
         width: size.w,
         height: size.h
-      }, this.params.speed, function() {
-        This.setContentSize(content, This.params.width, This.params.height);
+      }, this.params.speed, () => {
+        this.setContentSize(content, this.params.width, this.params.height);
         content.empty().append(data).css('opacity', 0)
-          .fadeTo(This.params.speed, 1, function() {
-            fn.call(This, content);
+          .fadeTo(this.params.speed, 1, () => {
+            fn.call(this, content);
           });
-        This.showCloser();
+        this.showCloser();
       });
     },
-    getBox: function(data, css, content_w, content_h) {
-      var box = $(
+    getBox(data, css, content_w, content_h) {
+      const box = $(
         '<div class="jq-modal">' +
         '<div class="jq-modal-container"><div class="jq-modal-content">' +
         '</div></div></div>'
@@ -92,12 +92,12 @@
       this.setContentSize($('div.jq-modal-content', box), content_w, content_h);
       return box;
     },
-    getBoxSize: function(data, content_w, content_h) {
-      var box = this.getBox(data, {
+    getBoxSize(data, content_w, content_h) {
+      let box = this.getBox(data, {
         visibility: 'hidden'
       }, content_w, content_h);
       this.ctrl.overlay.after(box);
-      var size = {
+      const size = {
         w: box.width(),
         h: box.height()
       };
@@ -105,13 +105,13 @@
       box = null;
       return size;
     },
-    setContentSize: function(content, w, h) {
+    setContentSize(content, w, h) {
       content.css({
         width: w > 0 ? w : 'auto',
         height: h > 0 ? h : 'auto'
       });
     },
-    showCloser: function() {
+    showCloser() {
       if ($('div.jq-modal-closer', this.ctrl.box).length > 0) {
         $('div.jq-modal-closer', this.ctrl.box).show();
         return;
@@ -120,13 +120,12 @@
       $('div.jq-modal-container', this.ctrl.box).append(
         `<div class="jq-modal-closer"><a href="#">${this.params.close_txt}</a></div>`
       );
-      var This = this;
-      var close = $('div.jq-modal-closer a', this.ctrl.box);
+      const close = $('div.jq-modal-closer a', this.ctrl.box);
       close.css({
           background: `transparent url(${this.params.close_img}) no-repeat`
         })
-        .click(function() {
-          This.removeOverlay();
+        .click(() => {
+          this.removeOverlay();
           return false;
         });
 
@@ -135,12 +134,11 @@
         close[0].runtimeStyle.backgroundImage = 'none';
       }
     },
-    hideCloser: function() {
+    hideCloser() {
       $('div.jq-modal-closer', this.ctrl.box).hide();
     },
 
-    addOverlay: function() {
-      var This = this;
+    addOverlay() {
       if (document.all) {
         this.ctrl.hidden = $('select:visible, object:visible, embed:visible').
         css('visibility', 'hidden');
@@ -154,8 +152,8 @@
           opacity: this.params.opacity
         })
         .appendTo('body')
-        .dblclick(function() {
-          This.removeOverlay();
+        .dblclick(() => {
+          this.removeOverlay();
         });
 
       this.resizeOverlay({
@@ -165,27 +163,27 @@
       $(window).on('resize.modal', this.ctrl, this.resizeOverlay);
       $(document).on('keypress.modal', this, this.keyRemove);
     },
-    resizeOverlay: function(e) {
+    resizeOverlay(e) {
       e.data.overlay.css({
         width: $(window).width(),
         height: $(document).height()
       });
       if (e.data.box.parents('body').length > 0) {
-        var top = Math.round($(window).height() / 2 + $(window).scrollTop() - e.data.box.height() / 2);
-        var left = Math.round($(window).width() / 2 + $(window).scrollLeft() - e.data.box.width() / 2);
+        const top = Math.round($(window).height() / 2 + $(window).scrollTop() - e.data.box.height() / 2);
+        const left = Math.round($(window).width() / 2 + $(window).scrollLeft() - e.data.box.width() / 2);
         e.data.box.css({
           top: top < 0 ? 0 : top,
           left: left < 0 ? 0 : left
         });
       }
     },
-    keyRemove: function(e) {
+    keyRemove(e) {
       if (e.keyCode == 27) {
         e.data.removeOverlay();
       }
       return true;
     },
-    removeOverlay: function() {
+    removeOverlay() {
       $(window).off('resize.modal');
       $(document).off('keypress');
       this.params.on_close.apply(this);
@@ -195,19 +193,20 @@
       this.ctrl.box = $();
     }
   };
-})(jQuery);
+})();
 
-(function($) {
+(() => {
+  const $ = jQuery;
   $.fn.modalImages = function(params) {
     params = $.extend(this.params, params);
-    var links = [];
+    const links = [];
     this.each(function() {
       if ($(this).attr('href') == '' || $(this).attr('href') == undefined || $(this).attr('href') == '#') {
         return false;
       }
-      var index = links.length;
+      const index = links.length;
       links.push($(this));
-      $(this).click(function() {
+      $(this).click(() => {
         new $.modalImages(index, links, params);
         return false;
       });
@@ -231,19 +230,19 @@
       next_img: 'next.png',
       blank_img: 'blank.gif'
     },
-    showImage: function(index) {
-      var This = this;
+    showImage(index) {
+      const This = this;
       $(document).off('keypress.modalImage');
       if (this.links[index] == undefined) {
         this.modal.removeOverlay();
       }
-      var link = this.links[index];
-      var modal = this.modal;
+      const link = this.links[index];
+      const { modal } = this;
 
-      var res = $('<div></div>');
+      const res = $('<div></div>');
       res.append(`<img src="${link.attr('href')}" alt="" />`);
 
-      var thumb = $('img:first', link);
+      const thumb = $('img:first', link);
       if (thumb.length > 0 && thumb.attr('title')) {
         res.append(`<span class="jq-modal-legend">${thumb.attr('title')}</span>`);
       } else if (link.attr('title')) {
@@ -258,7 +257,7 @@
         $('<a class="jq-modal-next" href="#">next</a>').appendTo(res);
       }
 
-      var img = new Image();
+      const img = new Image();
 
       // Display loader while loading image
       if (this.modal.ctrl.box.css('visibility') == 'visible') {
@@ -270,24 +269,24 @@
 
       img.onload = function() {
         modal.updateBox(res, function() {
-          var Img = $('div.jq-modal-content img', this.ctrl.box);
+          const Img = $('div.jq-modal-content img', this.ctrl.box);
           This.navBtnStyle($('a.jq-modal-next', this.ctrl.box), true).css('height', Img.height()).on('click', index + 1, navClick);
           This.navBtnStyle($('a.jq-modal-prev', this.ctrl.box), false).css('height', Img.height()).on('click', index - 1, navClick);
-          Img.click(function() {
+          Img.click(() => {
             This.modal.removeOverlay();
           });
           $(document).on('keypress.modalImage', navKey);
         });
-        this.onload = function() {};
+        this.onload = () => {};
       };
       img.src = link.attr('href');
 
-      var navClick = function(e) {
+      var navClick = (e) => {
         This.showImage(e.data);
         return false;
       };
-      var navKey = function(e) {
-        var key = String.fromCharCode(e.which).toLowerCase();
+      var navKey = (e) => {
+        const key = String.fromCharCode(e.which).toLowerCase();
         if ((key == 'n' || e.keyCode == 39) && index + 1 < This.links.length) { // Press "n"
           This.showImage(index + 1);
         }
@@ -296,10 +295,10 @@
         }
       };
     },
-    navBtnStyle: function(btn, next) {
-      var default_bg = `transparent url(${this.modal.params.blank_img}) repeat`;
-      var over_bg_i = next ? this.modal.params.next_img : this.modal.params.prev_img;
-      var over_bg_p = next ? 'right' : 'left';
+    navBtnStyle(btn, next) {
+      const default_bg = `transparent url(${this.modal.params.blank_img}) repeat`;
+      const over_bg_i = next ? this.modal.params.next_img : this.modal.params.prev_img;
+      const over_bg_p = next ? 'right' : 'left';
 
       btn.css('background', default_bg)
         .on('mouseenter', function() {
@@ -312,11 +311,12 @@
       return btn;
     }
   };
-})(jQuery);
+})();
 
-(function($) {
-  $.modalWeb = function(url, w, h) {
-    var iframe = $(`<iframe src="${url}" frameborder="0">`).css({
+(() => {
+  const $ = jQuery;
+  $.modalWeb = (url, w, h) => {
+    const iframe = $(`<iframe src="${url}" frameborder="0">`).css({
       border: 'none',
       width: w,
       height: h
@@ -332,4 +332,4 @@
       return false;
     });
   };
-})(jQuery);
+})();

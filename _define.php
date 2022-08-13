@@ -18,17 +18,17 @@ $this->registerModule(
     'lightBox',                                          // Name
     'lightBox like effect on images using jquery modal', // Description
     'Olivier Meunier and contributors',                  // Author
-    '1.5',                                               // Version
+    '1.6',                                               // Version
     [
-        'requires'    => [['core', '2.17']],                        // Dependencies
+        'requires'    => [['core', '2.23']],                        // Dependencies
         'permissions' => 'admin',                                   // Permissions
         'type'        => 'plugin',                                  // Type
         'settings'    => [
-            'blog' => '#params.lightbox'
+            'blog' => '#params.lightbox',
         ],
 
         'details'    => 'https://open-time.net/?q=lightbox',       // Details URL
         'support'    => 'https://github.com/franck-paul/lightbox', // Support URL
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/lightbox/master/dcstore.xml'
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/lightbox/master/dcstore.xml',
     ]
 );
