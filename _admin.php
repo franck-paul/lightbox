@@ -22,7 +22,7 @@ dcCore::app()->addBehavior('adminBeforeBlogSettingsUpdate', ['lightBoxBehaviors'
 
 class lightBoxBehaviors
 {
-    public static function adminBlogPreferencesForm($core = null, $settings)
+    public static function adminBlogPreferencesForm($core, $settings)
     {
         $settings->addNameSpace('lightbox');
         echo
