@@ -1,11 +1,11 @@
 <modules xmlns:da="http://dotaddict.org/da/">
   <module id="lightbox">
     <name>lightBox</name>
-    <version>1.6.1</version>
+    <version>2.0</version>
     <author>Olivier Meunier and contributors</author>
     <desc>lightBox like effect on images using jquery modal</desc>
-    <file>https://github.com/franck-paul/lightbox/releases/download/1.6.1/plugin-lightbox-1.6.1.zip</file>
-    <da:dcmin>2.23</da:dcmin>
+    <file>https://github.com/franck-paul/lightbox/releases/download/2.0/plugin-lightbox-2.0.zip</file>
+    <da:dcmin>2.24</da:dcmin>
     <da:details>https://open-time.net/?q=lightbox</da:details>
     <da:support>https://github.com/franck-paul/lightbox</da:support>
   </module>
