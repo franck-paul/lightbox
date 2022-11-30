@@ -17,12 +17,9 @@ if (!defined('DC_CONTEXT_ADMIN')) {
 // dead but useful code, in order to have translations
 __('lightBox') . __('lightBox like effect on images using jquery modal');
 
-dcCore::app()->addBehavior('adminBlogPreferencesForm', ['lightBoxBehaviors', 'adminBlogPreferencesForm']);
-dcCore::app()->addBehavior('adminBeforeBlogSettingsUpdate', ['lightBoxBehaviors', 'adminBeforeBlogSettingsUpdate']);
-
 class lightBoxBehaviors
 {
-    public static function adminBlogPreferencesForm($core, $settings)
+    public static function adminBlogPreferencesForm($settings)
     {
         $settings->addNameSpace('lightbox');
         echo
@@ -39,3 +36,6 @@ class lightBoxBehaviors
         $settings->lightbox->put('lightbox_enabled', !empty($_POST['lightbox_enabled']), 'boolean');
     }
 }
+
+dcCore::app()->addBehavior('adminBlogPreferencesFormV2', [lightBoxBehaviors::class, 'adminBlogPreferencesForm']);
+dcCore::app()->addBehavior('adminBeforeBlogSettingsUpdate', [lightBoxBehaviors::class, 'adminBeforeBlogSettingsUpdate']);

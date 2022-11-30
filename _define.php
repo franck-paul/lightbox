@@ -15,20 +15,22 @@ if (!defined('DC_RC_PATH')) {
 }
 
 $this->registerModule(
-    'lightBox',                                          // Name
-    'lightBox like effect on images using jquery modal', // Description
-    'Olivier Meunier and contributors',                  // Author
-    '1.6.1',
+    'lightBox',
+    'lightBox like effect on images using jquery modal',
+    'Olivier Meunier and contributors',
+    '2.0',
     [
-        'requires'    => [['core', '2.23']],                        // Dependencies
-        'permissions' => 'admin',                                   // Permissions
-        'type'        => 'plugin',                                  // Type
-        'settings'    => [
+        'requires'    => [['core', '2.24']],
+        'permissions' => dcCore::app()->auth->makePermissions([
+            dcAuth::PERMISSION_ADMIN,
+        ]),
+        'type'     => 'plugin',
+        'settings' => [
             'blog' => '#params.lightbox',
         ],
 
-        'details'    => 'https://open-time.net/?q=lightbox',       // Details URL
-        'support'    => 'https://github.com/franck-paul/lightbox', // Support URL
+        'details'    => 'https://open-time.net/?q=lightbox',
+        'support'    => 'https://github.com/franck-paul/lightbox',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/lightbox/master/dcstore.xml',
     ]
 );
