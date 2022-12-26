@@ -18,7 +18,6 @@ class lightBoxPublic
 {
     public static function publicHeadContent()
     {
-        dcCore::app()->blog->settings->addNameSpace('lightbox');
         if (!dcCore::app()->blog->settings->lightbox->lightbox_enabled) {
             return;
         }

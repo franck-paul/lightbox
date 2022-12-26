@@ -21,7 +21,6 @@ class lightBoxBehaviors
 {
     public static function adminBlogPreferencesForm($settings)
     {
-        $settings->addNameSpace('lightbox');
         echo
         '<div class="fieldset"><h4 id="lightbox">lightBox</h4>' .
         '<p><label class="classic">' .
@@ -32,10 +31,11 @@ class lightBoxBehaviors
 
     public static function adminBeforeBlogSettingsUpdate($settings)
     {
-        $settings->addNameSpace('lightbox');
         $settings->lightbox->put('lightbox_enabled', !empty($_POST['lightbox_enabled']), 'boolean');
     }
 }
 
-dcCore::app()->addBehavior('adminBlogPreferencesFormV2', [lightBoxBehaviors::class, 'adminBlogPreferencesForm']);
-dcCore::app()->addBehavior('adminBeforeBlogSettingsUpdate', [lightBoxBehaviors::class, 'adminBeforeBlogSettingsUpdate']);
+dcCore::app()->addBehaviors([
+    'adminBlogPreferencesFormV2'    => [lightBoxBehaviors::class, 'adminBlogPreferencesForm'],
+    'adminBeforeBlogSettingsUpdate' => [lightBoxBehaviors::class, 'adminBeforeBlogSettingsUpdate'],
+]);
