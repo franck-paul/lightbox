@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-09-24 13:26+0200\n"
+"POT-Creation-Date: 2023-06-05 19:07+0200\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 
 msgid "lightBox"
@@ -9,6 +9,10 @@ msgstr ""
 
 msgid "lightBox like effect on images using jquery modal"
 msgstr "Effets lightbox-like sur les images"
+
+#, fuzzy
+msgid "LightBox"
+msgstr "Activer lightBox"
 
 msgid "Enable lightBox"
 msgstr "Activer lightBox"
