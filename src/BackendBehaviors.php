@@ -23,7 +23,7 @@ use Dotclear\Helper\Html\Form\Para;
 
 class BackendBehaviors
 {
-    public static function adminBlogPreferencesForm($settings)
+    public static function adminBlogPreferencesForm()
     {
         $settings = dcCore::app()->blog->settings->get(My::id());
 
@@ -40,7 +40,7 @@ class BackendBehaviors
         ->render();
     }
 
-    public static function adminBeforeBlogSettingsUpdate($settings)
+    public static function adminBeforeBlogSettingsUpdate()
     {
         $settings = dcCore::app()->blog->settings->get(My::id());
         $settings->put('enabled', !empty($_POST['lightbox_enabled']), 'boolean');
