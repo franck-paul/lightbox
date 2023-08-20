@@ -27,12 +27,12 @@ class FrontendBehaviors
         }
 
         echo
-        dcUtils::cssModuleLoad(My::id() . '/css/modal.css') .
-        dcUtils::jsModuleLoad(My::id() . '/js/modal.js') .
+        My::cssLoad('modal.css') .
+        My::jsLoad('modal.js') .
         dcUtils::jsJson('lightbox', [
             'url'        => dcCore::app()->blog->getQmarkURL() . 'pf=' . My::id(),
             'extensions' => ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'],
         ]) .
-        dcUtils::jsModuleLoad(My::id() . '/js/public.js');
+        My::jsLoad('public.js');
     }
 }
