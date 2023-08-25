@@ -14,7 +14,6 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\lightbox;
 
-use dcCore;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Label;
@@ -25,7 +24,7 @@ class BackendBehaviors
 {
     public static function adminBlogPreferencesForm()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
 
         echo
         (new Fieldset('lightbox'))
@@ -42,7 +41,7 @@ class BackendBehaviors
 
     public static function adminBeforeBlogSettingsUpdate()
     {
-        $settings = dcCore::app()->blog->settings->get(My::id());
+        $settings = My::settings();
         $settings->put('enabled', !empty($_POST['lightbox_enabled']), 'boolean');
     }
 }

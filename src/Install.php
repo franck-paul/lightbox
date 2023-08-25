@@ -42,14 +42,14 @@ class Install extends Process
                         $settings->rename('lightbox_' . $name, $name);
                     }
                 };
-                $settings = dcCore::app()->blog->settings->get(My::id());
+                $settings = My::settings();
                 foreach (['enabled'] as $name) {
                     $rename($name, $settings);
                 }
             }
 
             // Init
-            $settings = dcCore::app()->blog->settings->get(My::id());
+            $settings = My::settings();
             $settings->put('enabled', false, dcNamespace::NS_BOOL, '', false, true);
         } catch (Exception $e) {
             dcCore::app()->error->add($e->getMessage());
