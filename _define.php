@@ -14,7 +14,7 @@ $this->registerModule(
     'lightBox',
     'lightBox like effect on images using jquery modal',
     'Olivier Meunier and contributors',
-    '3.0.3',
+    '4.0',
     [
         'requires'    => [['core', '2.27'], ['php', '8.1']],
         'permissions' => dcCore::app()->auth->makePermissions([
