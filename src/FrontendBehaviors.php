@@ -19,11 +19,11 @@ use dcUtils;
 
 class FrontendBehaviors
 {
-    public static function publicHeadContent()
+    public static function publicHeadContent(): string
     {
         $settings = My::settings();
         if (!$settings->enabled) {
-            return;
+            return '';
         }
 
         echo
@@ -34,5 +34,7 @@ class FrontendBehaviors
             'extensions' => ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'],
         ]) .
         My::jsLoad('public.js');
+
+        return '';
     }
 }

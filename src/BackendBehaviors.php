@@ -22,26 +22,27 @@ use Dotclear\Helper\Html\Form\Para;
 
 class BackendBehaviors
 {
-    public static function adminBlogPreferencesForm()
+    public static function adminBlogPreferencesForm(): string
     {
-        $settings = My::settings();
-
         echo
         (new Fieldset('lightbox'))
         ->legend((new Legend(__('LightBox'))))
         ->fields([
             (new Para())->items([
-                (new Checkbox('lightbox_enabled', $settings->enabled))
+                (new Checkbox('lightbox_enabled', My::settings()->enabled))
                     ->value(1)
                     ->label((new Label(__('Enable lightBox'), Label::INSIDE_TEXT_AFTER))),
             ]),
         ])
         ->render();
+
+        return '';
     }
 
-    public static function adminBeforeBlogSettingsUpdate()
+    public static function adminBeforeBlogSettingsUpdate(): string
     {
-        $settings = My::settings();
-        $settings->put('enabled', !empty($_POST['lightbox_enabled']), 'boolean');
+        My::settings()->put('enabled', !empty($_POST['lightbox_enabled']), 'boolean');
+
+        return '';
     }
 }
