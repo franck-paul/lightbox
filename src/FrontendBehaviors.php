@@ -14,8 +14,8 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\lightbox;
 
-use dcUtils;
 use Dotclear\App;
+use Dotclear\Helper\Html\Html;
 
 class FrontendBehaviors
 {
@@ -29,7 +29,7 @@ class FrontendBehaviors
         echo
         My::cssLoad('modal.css') .
         My::jsLoad('modal.js') .
-        dcUtils::jsJson('lightbox', [
+        Html::jsJson('lightbox', [
             'url'        => App::blog()->getQmarkURL() . 'pf=' . My::id(),
             'extensions' => ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'],
         ]) .
