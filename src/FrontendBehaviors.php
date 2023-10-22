@@ -31,7 +31,7 @@ class FrontendBehaviors
         My::jsLoad('modal.js') .
         Html::jsJson('lightbox', [
             'url'        => App::blog()->getQmarkURL() . 'pf=' . My::id(),
-            'extensions' => ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp'],
+            'extensions' => ['jpg', 'jpeg', 'png', 'gif', 'svg', 'webp', 'avif'],
         ]) .
         My::jsLoad('public.js');
 
