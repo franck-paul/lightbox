@@ -37,7 +37,7 @@ class Install extends Process
             $old_version = App::version()->getVersion(My::id());
             if (version_compare((string) $old_version, '3.0', '<')) {
                 // Change settings names (remove lightbox_ prefix in them)
-                $rename = function (string $name, BlogWorkspaceInterface $settings): void {
+                $rename = static function (string $name, BlogWorkspaceInterface $settings) : void {
                     if ($settings->settingExists('lightbox_' . $name, true)) {
                         $settings->rename('lightbox_' . $name, $name);
                     }
@@ -51,8 +51,8 @@ class Install extends Process
             // Init
             $settings = My::settings();
             $settings->put('enabled', false, App::blogWorkspace()::NS_BOOL, '', false, true);
-        } catch (Exception $e) {
-            App::error()->add($e->getMessage());
+        } catch (Exception $exception) {
+            App::error()->add($exception->getMessage());
         }
 
         return true;
