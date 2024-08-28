@@ -25,6 +25,6 @@ $this->registerModule(
 
         'details'    => 'https://open-time.net/?q=lightbox',
         'support'    => 'https://github.com/franck-paul/lightbox',
-        'repository' => 'https://raw.githubusercontent.com/franck-paul/lightbox/master/dcstore.xml',
+        'repository' => 'https://raw.githubusercontent.com/franck-paul/lightbox/main/dcstore.xml',
     ]
 );

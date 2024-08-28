@@ -10,7 +10,7 @@ $(() => {
     'close_img'  : `${lb.url}/img/close.png`,
     'blank_img'  : `${lb.url}/img/blank.gif`
   };
-  const sel = lb.extensions.map(x => `a[href\$=".${x}"], a[href\$=".${x.toUpperCase()}"]`).join(', ');
+  const sel = lb.extensions.map(x => `a[href$=".${x}"], a[href$=".${x.toUpperCase()}"]`).join(', ');
   $('div.post, article.post').each(function() {
     $(this).find(sel).modalImages(lb_settings);
   });
