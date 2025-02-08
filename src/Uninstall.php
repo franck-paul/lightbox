@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @brief lightbox, a plugin for Dotclear 2
  *

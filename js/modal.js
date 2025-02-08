@@ -4,7 +4,7 @@
 (() => {
   const $ = jQuery;
   if (/^1\.(0|1)\./.test($.fn.jquery) || /^1\.2\.(0|1|2|3|4|5)/.test($.fn.jquery)) {
-    throw `Modal requieres jQuery v1.2.6 or later. You are using v${$.fn.jquery}`;
+    throw new Error(`Modal requieres jQuery v1.2.6 or later. You are using v${$.fn.jquery}`);
   }
 
   $.modal = function (data, params) {
@@ -45,7 +45,7 @@
         visibility: 'hidden',
       });
       this.ctrl.overlay.after(this.ctrl.box);
-      if (data != undefined) {
+      if (data !== undefined) {
         this.updateBox(data);
         this.data = data;
       }
@@ -97,7 +97,7 @@
         ),
       );
 
-      if (data != undefined) {
+      if (data !== undefined) {
         $('div.jq-modal-content', box).append(data);
       }
 
@@ -196,7 +196,7 @@
       }
     },
     keyRemove(e) {
-      if (e.keyCode == 27) {
+      if (e.keyCode === 27) {
         e.data.removeOverlay();
       }
       return true;
@@ -219,7 +219,7 @@
     params = $.extend(this.params, params);
     const links = [];
     this.each(function () {
-      if ($(this).attr('href') == '' || $(this).attr('href') == undefined || $(this).attr('href') == '#') {
+      if ($(this).attr('href') === '' || $(this).attr('href') === undefined || $(this).attr('href') === '#') {
         return false;
       }
       const index = links.length;
@@ -338,8 +338,7 @@
 })();
 
 (() => {
-  const $ = jQuery;
-  $.modalWeb = (url, w, h) => {
+  jQuery.modalWeb = (url, w, h) => {
     const iframe = $(`<iframe src="${url}" frameborder="0">`).css({
       border: 'none',
       width: w,
@@ -348,10 +347,10 @@
     return new $.modal(iframe);
   };
 
-  $.fn.modalWeb = function (w, h) {
-    this.click(function () {
-      if (this.href != undefined) {
-        $.modalWeb(this.href, w, h);
+  jQuery.fn.modalWeb = function (w, h) {
+    this.on('click', function () {
+      if (this.href !== undefined) {
+        jQuery.modalWeb(this.href, w, h);
       }
       return false;
     });

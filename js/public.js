@@ -1,4 +1,4 @@
-/*global $, dotclear */
+/*global jQuery, dotclear */
 'use strict';
 
 dotclear.ready(() => {
@@ -11,7 +11,8 @@ dotclear.ready(() => {
     blank_img: `${lb.url}/img/blank.gif`,
   };
   const sel = lb.extensions.map((x) => `a[href$=".${x}"], a[href$=".${x.toUpperCase()}"]`).join(', ');
-  $('div.post, article.post').each(function () {
-    $(this).find(sel).modalImages(lb_settings);
-  });
+  const posts = document.querySelectorAll('div.post, article.post');
+  for (const post of posts) {
+    jQuery(post).find(sel).modalImages(lb_settings);
+  }
 });
