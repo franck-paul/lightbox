@@ -18,7 +18,7 @@ $this->registerModule(
     '5.3',
     [
         'date'        => '2025-02-08T17:02:07+0100',
-        'requires'    => [['core', '2.28']],
+        'requires'    => [['core', '2.36']],
         'permissions' => 'My',
         'type'        => 'plugin',
         'settings'    => [
@@ -28,5 +28,6 @@ $this->registerModule(
         'details'    => 'https://open-time.net/?q=lightbox',
         'support'    => 'https://github.com/franck-paul/lightbox',
         'repository' => 'https://raw.githubusercontent.com/franck-paul/lightbox/main/dcstore.xml',
+        'license'    => 'gpl2',
     ]
 );
