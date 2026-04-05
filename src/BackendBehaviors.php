@@ -30,7 +30,7 @@ class BackendBehaviors
         ->legend((new Legend(__('LightBox'))))
         ->fields([
             (new Para())->items([
-                (new Checkbox('lightbox_enabled', My::settings()->enabled))
+                (new Checkbox('lightbox_enabled', (bool) My::settings()->enabled))
                     ->value(1)
                     ->label((new Label(__('Enable lightBox'), Label::INSIDE_TEXT_AFTER))),
             ]),
