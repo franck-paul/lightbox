@@ -15,9 +15,9 @@ $this->registerModule(
     'lightBox',
     'lightBox like effect on images using jquery modal',
     'Olivier Meunier and contributors',
-    '6.0',
+    '6.1',
     [
-        'date'        => '2025-09-07T15:58:53+0200',
+        'date'        => '2026-04-05T21:33:40+0200',
         'requires'    => [['core', '2.36']],
         'permissions' => 'My',
         'type'        => 'plugin',
