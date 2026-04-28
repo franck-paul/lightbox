@@ -15,6 +15,7 @@ declare(strict_types=1);
 
 namespace Dotclear\Plugin\lightbox;
 
+use Dotclear\App;
 use Dotclear\Helper\Html\Form\Checkbox;
 use Dotclear\Helper\Html\Form\Fieldset;
 use Dotclear\Helper\Html\Form\Label;
@@ -42,7 +43,7 @@ class BackendBehaviors
 
     public static function adminBeforeBlogSettingsUpdate(): string
     {
-        My::settings()->put('enabled', !empty($_POST['lightbox_enabled']), 'boolean');
+        My::settings()->put('enabled', !empty($_POST['lightbox_enabled']), App::blogWorkspace()::NS_BOOL);
 
         return '';
     }
