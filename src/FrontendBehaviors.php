@@ -23,7 +23,7 @@ class FrontendBehaviors
     public static function publicHeadContent(): string
     {
         $settings = My::settings();
-        if (!$settings->enabled) {
+        if (!$settings->getBool('enabled')) {
             return '';
         }
 
