@@ -12,16 +12,16 @@ div.jq-modal-content {
 }
 div.jq-modal-closer {
   position: absolute;
-  top: -12px;
-  right: -12px;
-  width: 25px;
-  height: 25px;
+  inset-block-start: -12px;
+  inset-inline-end: -12px;
+  inline-size: 25px;
+  block-size: 25px;
 }
 div.jq-modal-closer a {
   display: block;
   text-indent: -5000px;
-  width: 25px;
-  height: 25px;
+  inline-size: 25px;
+  block-size: 25px;
   outline: none;
   border: none;
 }
@@ -37,16 +37,16 @@ span.jq-modal-legend {
 a.jq-modal-next, a.jq-modal-prev {
   display: block;
   position: absolute;
-  top: 0;
-  width: 50%;
-  bottom: 0;
+  inset-block-start: 0;
+  inline-size: 50%;
+  inset-block-end: 0;
   outline: none;
   border: none;
   text-indent: -5000px;
 }
 a.jq-modal-next {
-  right: 0;
+  inset-inline-end: 0;
 }
 a.jq-modal-prev {
-  left: 0;
+  inset-inline-start: 0;
 }
