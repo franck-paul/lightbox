@@ -38,7 +38,7 @@ class Install
         try {
             // Update
             $old_version = App::version()->getVersion(My::id());
-            if (version_compare((string) $old_version, '3.0', '<')) {
+            if (version_compare($old_version, '3.0', '<')) {
                 // Change settings names (remove lightbox_ prefix in them)
                 $rename = static function (string $name, BlogWorkspaceInterface $blogWorkspace): void {
                     if ($blogWorkspace->settingExists('lightbox_' . $name, true)) {
