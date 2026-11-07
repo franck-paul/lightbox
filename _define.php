@@ -18,9 +18,9 @@ if (isset($this) && is_object($this) && method_exists($this, 'registerModule') &
         'lightBox',
         'lightBox like effect on images using jquery modal',
         'Olivier Meunier and contributors',
-        '7.0',
+        '7.1',
         [
-            'date'        => '2026-08-03T10:02:50+0200',
+            'date'        => '2026-11-07T16:56:51+0100',
             'requires'    => [['core', '2.39']],
             'permissions' => 'My',
             'type'        => 'plugin',
